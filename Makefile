@@ -1,8 +1,13 @@
-fib: fib.c
-	gcc -o fib fib.c
+CC = gcc
+CFLAGS = -Wall
+
+all: fib
+
+fib: fib.o
+	$(CC) $(CFLAGS) -o fib fib.o
+
+fib.o: fib.c
+	$(CC) $(CFLAGS) -c fib.c
 
 clean:
-	rm fib
-
-test: fib
-	bash test.sh
+	rm -f fib fib.o
